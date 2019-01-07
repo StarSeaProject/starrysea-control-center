@@ -20,7 +20,7 @@ public class Router {
 	@Bean
 	public RouterFunction<ServerResponse> routerFunction() {
 		return RouterFunctions.route(
-				RequestPredicates.GET("/hello").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
+				RequestPredicates.GET("/hello/{id}").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
 				rootHandler::hello);
 	}
 }

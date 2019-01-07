@@ -18,7 +18,7 @@ public class RootHandler {
 	private HelloRepository helloRepository;
 
 	public Mono<ServerResponse> hello(ServerRequest request) {
-		Mono<Hello> hellos = helloRepository.findById(Long.parseLong(request.queryParam("id").get()));
+		Mono<Hello> hellos = helloRepository.findById(Long.parseLong(request.pathVariable("id")));
 		Mono<HelloResource> helloResouce = hellos.map(HelloResource::of);
 		return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(helloResouce, HelloResource.class);
 	}
