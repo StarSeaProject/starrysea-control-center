@@ -1,11 +1,14 @@
 package top.starrysea.vo;
 
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.ResourceSupport;
+import java.util.HashMap;
+import java.util.Map;
 
 import top.starrysea.dto.Hello;
+import top.starrysea.hateoas.Link;
+import top.starrysea.hateoas.Method;
+import top.starrysea.hateoas.Resource;
 
-public class HelloResource extends ResourceSupport {
+public class HelloResource extends Resource {
 
 	private Long helloId;
 	private String message;
@@ -13,7 +16,10 @@ public class HelloResource extends ResourceSupport {
 	private HelloResource(Hello hello) {
 		this.helloId = hello.getId();
 		this.message = hello.getMessage();
-		this.add(new Link("/next", "next"));
+		Map<String,Object> args=new HashMap<>();
+		args.put("key1", "value1");
+		args.put("key2", "value2");
+		this.addLink(new Link("/next", Method.GET, args));
 	}
 
 	public static HelloResource of(Hello hello) {
