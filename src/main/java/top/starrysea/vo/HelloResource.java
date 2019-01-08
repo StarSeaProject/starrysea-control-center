@@ -16,7 +16,7 @@ public class HelloResource extends Resource {
 	private HelloResource(Hello hello) {
 		this.helloId = hello.getId();
 		this.message = hello.getMessage();
-		Map<String,Object> args=new HashMap<>();
+		Map<String, Object> args = new HashMap<>();
 		args.put("key1", "value1");
 		args.put("key2", "value2");
 		this.addLink(new Link("/next", Method.GET, args));
