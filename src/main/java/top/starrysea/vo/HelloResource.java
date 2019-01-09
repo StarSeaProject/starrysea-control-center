@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import top.starrysea.dto.Hello;
-import top.starrysea.hateoas.Link;
-import top.starrysea.hateoas.Method;
+import top.starrysea.handler.RootHandler;
+import top.starrysea.hateoas.LinkBinding;
 import top.starrysea.hateoas.Resource;
 
 public class HelloResource extends Resource {
@@ -17,9 +17,9 @@ public class HelloResource extends Resource {
 		this.helloId = hello.getId();
 		this.message = hello.getMessage();
 		Map<String, Object> args = new HashMap<>();
+		args.put("id", "7");
 		args.put("key1", "value1");
-		args.put("key2", "value2");
-		this.addLink(new Link("/next", Method.GET, args));
+		this.addLink(LinkBinding.linkTo(RootHandler.class, "hello", args));
 	}
 
 	public static HelloResource of(Hello hello) {

@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import top.starrysea.handler.RootHandler;
+import top.starrysea.hateoas.HttpMethod;
 
 @Configuration
 public class Router {
@@ -19,8 +19,8 @@ public class Router {
 
 	@Bean
 	public RouterFunction<ServerResponse> routerFunction() {
-		return RouterFunctions.route(
+		return StarryseaRouterFunctions.route(
 				RequestPredicates.GET("/hello/{id}").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
-				rootHandler::hello);
+				rootHandler::hello, UrlInfo.of(rootHandler.getClass(), "hello", HttpMethod.GET, "/hello/{id}"));
 	}
 }
