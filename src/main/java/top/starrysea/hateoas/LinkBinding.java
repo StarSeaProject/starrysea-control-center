@@ -20,14 +20,12 @@ public class LinkBinding {
 		Map<StarryseaControllerHandle, UrlInfo> handlerMapping = StarryseaRouterFunctions.getHandlerMapping();
 		UrlInfo urlInfo = handlerMapping.get(StarryseaControllerHandle.of(clazz, method));
 		String url = urlInfo.getUrl();
-		Map<String, Object> templateTemp = template;
 		for (Map.Entry<String, Object> entry : template.entrySet()) {
 			if (url.contains(entry.getKey())) {
 				url = url.replaceAll("\\{" + entry.getKey() + "\\}", (String) entry.getValue());
 				urlInfo.setUrl(url);
-				templateTemp.remove(entry.getKey());
 			}
 		}
-		return new Link(urlInfo.getUrl(), urlInfo.getMethod(), templateTemp);
+		return new Link(urlInfo.getUrl(), urlInfo.getMethod(), template);
 	}
 }
