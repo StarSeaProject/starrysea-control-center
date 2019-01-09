@@ -3,7 +3,6 @@ package top.starrysea.hateoas;
 import java.util.Map;
 
 import top.starrysea.StarryseaRouterFunctions;
-import top.starrysea.UrlInfo;
 
 public class LinkBinding {
 

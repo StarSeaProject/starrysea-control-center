@@ -1,7 +1,4 @@
-package top.starrysea;
-
-import top.starrysea.hateoas.HttpMethod;
-import top.starrysea.hateoas.StarryseaControllerHandle;
+package top.starrysea.hateoas;
 
 public class UrlInfo {
 

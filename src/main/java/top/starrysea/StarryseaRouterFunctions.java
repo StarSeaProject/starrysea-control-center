@@ -12,6 +12,7 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import top.starrysea.hateoas.StarryseaControllerHandle;
+import top.starrysea.hateoas.UrlInfo;
 
 @Component
 public class StarryseaRouterFunctions {

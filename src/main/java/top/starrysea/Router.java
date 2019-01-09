@@ -10,6 +10,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 import top.starrysea.handler.RootHandler;
 import top.starrysea.hateoas.HttpMethod;
+import top.starrysea.hateoas.UrlInfo;
 
 @Configuration
 public class Router {
