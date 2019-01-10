@@ -17,6 +17,9 @@ import top.starrysea.hateoas.UrlInfo;
 @Component
 public class StarryseaRouterFunctions {
 
+	private StarryseaRouterFunctions() {
+	}
+
 	private static RouterFunction routerFunction;
 
 	private static Map<StarryseaControllerHandle, UrlInfo> handlerMapping = new HashMap<>();

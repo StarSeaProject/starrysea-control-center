@@ -2,6 +2,8 @@ package top.starrysea.hateoas;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.InvalidMediaTypeException;
 import org.springframework.http.MediaType;
 import org.springframework.lang.Nullable;
@@ -15,6 +17,8 @@ public class StarryseaMediaType extends MediaType {
 	 * 
 	 */
 	private static final long serialVersionUID = -4960748344746789573L;
+
+	private static final Logger logger = LoggerFactory.getLogger(StarryseaMediaType.class);
 
 	public StarryseaMediaType(String type, String subtype, @Nullable Map<String, String> parameters) {
 		super(type, subtype, parameters);
@@ -35,6 +39,7 @@ public class StarryseaMediaType extends MediaType {
 		try {
 			type = MimeTypeUtils.parseMimeType(mediaType);
 		} catch (InvalidMimeTypeException ex) {
+			logger.error(ex.getMessage(), ex);
 			throw ex;
 		}
 		try {
