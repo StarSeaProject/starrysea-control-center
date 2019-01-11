@@ -20,12 +20,12 @@ public class StarryseaRouterFunctions {
 	private StarryseaRouterFunctions() {
 	}
 
-	private static RouterFunction routerFunction;
+	private static RouterFunction<ServerResponse> routerFunction;
 
 	private static Map<StarryseaControllerHandle, UrlInfo> handlerMapping = new HashMap<>();
 
-	public static <T extends ServerResponse> RouterFunction<T> route(RequestPredicate predicate,
-			HandlerFunction<T> handlerFunction, UrlInfo urlInfo) {
+	public static RouterFunction<ServerResponse> route(RequestPredicate predicate,
+			HandlerFunction<ServerResponse> handlerFunction, UrlInfo urlInfo) {
 		handlerMapping.put(urlInfo.getHandle(), urlInfo);
 		if (routerFunction == null) {
 			routerFunction = RouterFunctions.route(predicate, handlerFunction);
